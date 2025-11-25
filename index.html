@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitra Komunitas Kami | Semeja Kerja</title>
+    <title>Kafe Pilihan Kami | Semeja Kerja</title>
     <!-- Memuat Tailwind CSS dari CDN --><script src="https://cdn.tailwindcss.com"></script>
     <!-- Konfigurasi Font dan Warna Kustom Tailwind --><script>
         tailwind.config = {
@@ -13,7 +13,7 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'primary': '#3d155f', // Ungu Tua (Main Brand Color)
+                        'primary': '#48246E', // Ungu Tua (Main Brand Color)
                         'secondary': '#B5A566', // Kuning/Krem gelap (Digunakan minimal)
                         'accent': '#F0C733', // Kuning Cerah (Accent Color & Highlight)
                         'text-light': '#F0E6D0', // Warna terang untuk teks di atas primary
@@ -26,7 +26,7 @@
     <style>
         /* Gaya kustom untuk memastikan semua logo terlihat bagus */
         .logo-item {
-            height: 100px;
+            height: 120px; /* Ditingkatkan dari 100px */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -42,7 +42,7 @@
 
         .logo-img {
             max-width: 100%;
-            max-height: 80px;
+            max-height: 100px; /* Ditingkatkan dari 80px */
             object-fit: contain;
             /* Filter grayscale untuk tampilan profesional, dihilangkan saat hover */
             filter: grayscale(100%);
@@ -55,7 +55,7 @@
 
         /* Gaya Khusus untuk Logo Header */
         .header-logo {
-            height: 100px; /* Tinggi yang ideal untuk logo di header */
+            height: 40px; /* Tinggi dipertahankan 40px agar header tetap ringkas */
             width: auto;
         }
     </style>
@@ -67,13 +67,13 @@
             <!-- Logo Komunitas Semeja Kerja di Header -->
             <a href="#" class="flex items-center">
                 <img class="header-logo" 
-                     src="assets/logos/semejakerja.png" 
+                     src="assets/logos/semejakerja-logo.png" 
                      alt="Semeja Kerja Logo" 
                      onerror="this.onerror=null; this.src='https://placehold.co/180x40/48246E/F0E6D0?text=SEMEJA+KERJA';">
             </a>
             
             <nav>
-                <a href="#mitra" class="text-sm font-medium text-text-light hover:text-accent transition">Mitra Kafe</a>
+                <a href="#mitra" class="text-sm font-medium text-text-light hover:text-accent transition">Kafe Pilihan</a>
             </nav>
         </div>
     </header>
@@ -87,9 +87,9 @@
             <p class="mt-4 text-xl opacity-90 text-gray-600">
                 Semeja Kerja adalah komunitas Work From Cafe (WFC) satu-satunya di Purwokerto yang mempertemukanmu dengan *stranger* untuk WFC bareng.
             </p>
-            <!-- CTA Button 1 (Warna Primary - Fokus Utama) -->
-            <a href="#mitra" class="mt-8 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-text-light bg-primary hover:bg-yellow-400 transition duration-300">
-                Lihat Kafe Mitra Kami
+            <!-- CTA Button 1 - Diubah ke warna Accent (Kuning) -->
+            <a href="#mitra" class="mt-8 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-primary bg-accent hover:bg-yellow-400 transition duration-300">
+                Lihat Kafe Pilihan Kami
             </a>
         </div>
     </section>
@@ -98,12 +98,12 @@
     <section id="mitra" class="py-16 sm:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h3 class="text-base text-primary font-semibold tracking-wide uppercase">Lokasi Terbaik untuk WFC</h3>
+                <h3 class="text-base text-primary font-semibold tracking-wide uppercase">Tempat Terbaik untuk WFC</h3>
                 <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Kafe Mitra Eksklusif Semeja Kerja
+                    Kafe Pilihan Komunitas Semeja Kerja
                 </p>
                 <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
-                    Kami berkolaborasi dengan kafe-kafe terbaik di Purwokerto untuk menyelenggarakan acara WFC bareng yang nyaman dan inspiratif.
+                    Kami memilih kafe-kafe terbaik di Purwokerto untuk menyelenggarakan acara WFC bareng yang nyaman dan inspiratif.
                 </p>
             </div>
 
@@ -162,7 +162,7 @@
             
             <!-- CTA Sederhana di bawah daftar mitra -->
             <div class="mt-16 text-center">
-                <p class="text-xl text-gray-700">Tertarik untuk menjadi kafe mitra Semeja Kerja berikutnya di Purwokerto?</p>
+                <p class="text-xl text-gray-700">Tertarik berkolaborasi dengan Semeja Kerja?</p>
                 <!-- CTA Button 2 (Warna Accent - High Visual Pop) -->
                 <a href="#" class="mt-3 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-lg text-primary bg-accent hover:bg-yellow-400 transition duration-300">
                     Hubungi Kami Sekarang
