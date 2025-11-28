@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semeja Kerja</title>
-    <!-- Memuat Tailwind CSS dari CDN --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Konfigurasi Font dan Warna Kustom Tailwind --><script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="assets/logos/semejakerja-only-logo.png">
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -25,32 +26,33 @@
     </script>
     <style>
         /* Gaya kustom untuk memastikan semua logo terlihat bagus */
+        /* Gaya kustom untuk memastikan semua logo terlihat bagus */
         .logo-item {
-            height: 120px; /* Ditingkatkan dari 100px */
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1rem;
-            background-color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .logo-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
 
         .logo-img {
             max-width: 100%;
-            max-height: 100px; /* Ditingkatkan dari 80px */
+            max-height: 90px; /* Sedikit diperkecil agar lebih rapi */
             object-fit: contain;
-            /* Filter grayscale untuk tampilan profesional, dihilangkan saat hover */
+            opacity: 0.6; /* Mulai dengan agak transparan */
             filter: grayscale(100%);
-            transition: filter 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .logo-item:hover .logo-img {
             filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         /* Gaya Khusus untuk Logo Header */
@@ -59,118 +61,184 @@
             width: auto;
             object-fit: contain;
         }
+
+        /* Button Slide Effect */
+        .btn-slide {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.4s ease-in-out;
+        }
+        
+        .btn-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #3D155F; /* Primary Color */
+            z-index: -1;
+            transition: width 0.4s ease-in-out;
+            border-radius: 9999px; /* Match rounded-full */
+        }
+        
+        .btn-slide:hover::before {
+            width: 100%;
+        }
+        
+        .btn-slide:hover {
+            color: white !important; /* Force text color change */
+        }
     </style>
 </head>
-<body class="font-sans bg-background text-gray-800">
+<body class="font-sans bg-background text-gray-800 antialiased">
 
-    <!-- Header / Navigasi (Warna Primary: Ungu) -->
-    <header class="bg-primary shadow-xl sticky top-0 z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+    <!-- Header / Navigasi (Sticky, Warna Primary) -->
+    <header class="bg-primary shadow-2xl sticky top-0 z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <!-- Logo Komunitas Semeja Kerja di Header -->
             <a href="#" class="flex items-center">
                 <img class="header-logo" 
                      src="assets/logos/semejakerja-logo.png" 
                      alt="Semeja Kerja Logo" 
-                     onerror="this.onerror=null; this.src='https://placehold.co/180x60/3D155F/F0E6D0?text=SEMEJA+KERJA';">
+                     onerror="this.onerror=null; this.src='https://placehold.co/180x48/3D155F/F0E6D0?text=SEMEJA+KERJA';">
             </a>
             
             <nav class="flex items-center space-x-6">
-                <!-- Link Kafe Pilihan -->
-                <a href="#mitra" class="text-sm font-medium text-text-light hover:text-accent transition">Kafe Pilihan</a>
+                <!-- Link Navigasi -->
+                <a href="#about" class="hidden sm:inline text-sm font-medium text-text-light hover:text-accent transition duration-200">Tentang Kami</a>
+                
+                <!-- CTA Utama di Navigasi -->
+                <a href="#mitra" class="btn-slide inline-flex items-center px-6 py-2 border border-transparent text-sm font-semibold rounded-full shadow-md text-primary bg-accent transition duration-300">
+                    Kafe Pilihan
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- Bagian Utama / Hero Section (Warna Background: Abu-abu Terang) -->
-    <section class="py-20 bg-background text-gray-800 text-center">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl font-extrabold tracking-tight sm:text-6xl text-primary">
-                WFC Bareng Strangers? Hanya di Semeja Kerja!
-            </h2>
-            <p class="mt-4 text-xl opacity-90 text-gray-600">
-                Semeja Kerja adalah komunitas Work From Cafe (WFC) satu-satunya di Purwokerto yang mempertemukanmu dengan *stranger* untuk WFC bareng.
+    <!-- Bagian Utama / Hero Section (Dramatis & Modern) -->
+    <section class="py-24 md:py-36 text-center relative overflow-hidden" style="background-image: linear-gradient(rgba(61, 21, 95, 0.85), rgba(61, 21, 95, 0.75)), url('assets/bg-hero.jpeg'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Tagline -->
+            <p class="text-lg font-semibold text-accent mb-3 uppercase tracking-widest">
+                #WFCBarengStrangers di Purwokerto
             </p>
-            <!-- CTA Button 1 - Diubah ke warna Accent (Kuning) -->
-            <a href="#mitra" class="mt-8 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-primary bg-accent hover:bg-yellow-400 transition duration-300">
-                Lihat Kafe Pilihan Kami
+            
+            <!-- Judul Paling Besar dan Tebal -->
+            <h1 class="text-6xl font-extrabold tracking-tight sm:text-7xl md:text-8xl text-white leading-none">
+                <span class="block">Work From Cafe?</span>
+                <span class="block mt-2 text-accent">Coba WFC Bersama!</span>
+            </h1>
+            
+            <p class="mt-8 text-xl md:text-2xl opacity-95 text-gray-200 max-w-3xl mx-auto">
+                Semeja Kerja adalah komunitas dinamis yang menghubungkanmu dengan profesional, freelancer dan mahasiswa untuk bekerja bersama di kafe-kafe terbaik.
+            </p>
+            
+            <!-- CTA Button Utama -->
+            <a href="https://linktr.ee/semejakerja" target="_blank" class="mt-12 inline-flex items-center justify-center px-12 py-4 border border-transparent text-xl font-bold rounded-full shadow-2xl text-primary bg-accent hover:bg-yellow-400 transform hover:scale-105 transition duration-500 ease-in-out">
+                Gabung Komunitas (100% Gratis)
             </a>
         </div>
     </section>
-
-    <!-- Bagian Logo Mitra (Partners Section - Warna Putih Murni: bg-white) -->
-    <section id="mitra" class="py-16 sm:py-24 bg-white">
+    
+    <section id="about" class="py-16 sm:py-24 bg-card border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h3 class="text-base text-primary font-semibold tracking-wide uppercase">Tempat Terbaik untuk WFC</h3>
-                <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                <h3 class="text-lg text-primary font-semibold tracking-wide uppercase">Mengapa Semeja Kerja?</h3>
+                <p class="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
+                    3 Alasan Utama Kamu Harus Ikutan WFC!
+                </p>
+            </div>
+            
+            <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+                <!-- Card 1: Koneksi (Warna Primary) -->
+                <div class="p-8 bg-background rounded-3xl shadow-xl hover:shadow-2xl transition duration-300 border-b-4 border-primary">
+                    <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-primary text-text-light font-bold">
+                        1
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-3">Perluas Jaringan Profesional</h4>
+                    <p class="text-gray-600">Bertemu stranger yang mungkin memiliki bidang atau minat yang sama. Mulai kolaborasi tak terduga dan tingkatkan networking Anda.</p>
+                </div>
+
+                <!-- Card 2: Produktivitas (Warna Accent) -->
+                <div class="p-8 bg-background rounded-3xl shadow-xl hover:shadow-2xl transition duration-300 border-b-4 border-accent">
+                    <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-accent text-primary font-bold">
+                        2
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-3">Peningkatan Fokus & Motivasi</h4>
+                    <p class="text-gray-600">Bekerja di tengah orang lain memicu "efek co-working" yang meningkatkan fokus dan semangat kerja Anda secara signifikan.</p>
+                </div>
+
+                <!-- Card 3: Eksplorasi (Warna Primary) -->
+                <div class="p-8 bg-background rounded-3xl shadow-xl hover:shadow-2xl transition duration-300 border-b-4 border-primary">
+                    <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-primary text-text-light font-bold">
+                        3
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-900 mb-3">Eksplorasi Kafe Pilihan</h4>
+                    <p class="text-gray-600">Tidak perlu pusing mencari tempat WFC. Kami sudah kurasi kafe-kafe terbaik di Purwokerto dengan Wi-Fi kencang dan suasana nyaman.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Bagian Logo Mitra (Partners Section - Grid 6 Kolom Responsif) -->
+    <section id="mitra" class="py-16 sm:py-24 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-lg text-primary font-semibold tracking-wide uppercase">Tempat Terbaik untuk WFC</h3>
+                <p class="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
                     Kafe Pilihan Komunitas Semeja Kerja
                 </p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+                <p class="mt-4 max-w-2xl text-lg text-gray-600 mx-auto">
                     Kami memilih kafe-kafe terbaik di Purwokerto untuk menyelenggarakan acara WFC bareng yang nyaman dan inspiratif.
                 </p>
             </div>
 
-            <!-- Grid untuk Logo Mitra (Diatur 3 kolom untuk layar besar agar 6 logo simetris) -->
-            <div class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-3">
+            <!-- Grid untuk Logo Mitra (6 kolom di layar besar) -->
+            <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
                 
-                <!-- Logo 1: DUANJA - PERLU DIGANTI URL-NYA! -->
-                <div class="logo-item rounded-xl shadow-lg hover:shadow-2xl">
-                    <img class="logo-img" 
-                         src="assets/logos/duanja-logo.png" 
-                         alt="Logo Duanja" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/150x80/6366F1/ffffff?text=DUANJA';">
+                <!-- Logo 1: DUANJA -->
+                <div class="logo-item">
+                    <img class="logo-img" src="assets/logo-kafe/duanja.png" alt="Logo Duanja" onerror="this.onerror=null; this.src='https://placehold.co/150x80/6366F1/ffffff?text=DUANJA';">
                 </div>
 
-                <!-- Logo 2: THE SOEDS - PERLU DIGANTI URL-NYA! -->
-                <div class="logo-item rounded-xl shadow-lg hover:shadow-2xl">
-                    <img class="logo-img" 
-                         src="assets/logos/thesoeds-logo.png" 
-                         alt="Logo The Soeds"
-                         onerror="this.onerror=null; this.src='https://placehold.co/150x80/10B981/ffffff?text=THE+SOEDS';">
+                <!-- Logo 2: THE SOEDS -->
+                <div class="logo-item">
+                    <img class="logo-img" src="assets/logo-kafe/the-soeds.png" alt="Logo The Soeds" onerror="this.onerror=null; this.src='https://placehold.co/150x80/10B981/ffffff?text=THE+SOEDS';">
                 </div>
                 
-                <!-- Logo 3: MEATBOSS - PERLU DIGANTI URL-NYA! -->
-                <div class="logo-item rounded-xl shadow-lg hover:shadow-2xl">
-                    <img class="logo-img" 
-                         src="assets/logos/meatboss-logo.png" 
-                         alt="Logo Meatboss"
-                         onerror="this.onerror=null; this.src='https://placehold.co/150x80/EF4444/ffffff?text=MEATBOSS';">
+                <!-- Logo 3: MEATBOSS -->
+                <div class="logo-item">
+                    <img class="logo-img" src="assets/logo-kafe/meatboss.png" alt="Logo Meatboss" onerror="this.onerror=null; this.src='https://placehold.co/150x80/EF4444/ffffff?text=MEATBOSS';">
                 </div>
 
-                <!-- Logo 4: KALARASA - PERLU DIGANTI URL-NYA! -->
-                <div class="logo-item rounded-xl shadow-lg hover:shadow-2xl">
-                    <img class="logo-img" 
-                         src="assets/logos/kalarasa-logo.png" 
-                         alt="Logo Kalarasa"
-                         onerror="this.onerror=null; this.src='https://placehold.co/150x80/FBBF24/ffffff?text=KALARASA';">
+                <!-- Logo 4: KALARASA -->
+                <div class="logo-item">
+                    <img class="logo-img" src="assets/logo-kafe/kalarasa.png" alt="Logo Kalarasa" onerror="this.onerror=null; this.src='https://placehold.co/150x80/FBBF24/ffffff?text=KALARASA';">
                 </div>
 
-                <!-- Logo 5: RUANG TEMU - PERLU DIGANTI URL-NYA! -->
-                <div class="logo-item rounded-xl shadow-lg hover:shadow-2xl">
-                    <img class="logo-img" 
-                         src="assets/logos/ruangtemu-logo.png" 
-                         alt="Logo Ruang Temu"
-                         onerror="this.onerror=null; this.src='https://placehold.co/150x80/4A5568/ffffff?text=RUANG+TEMU';">
+                <!-- Logo 5: RUANG TEMU -->
+                <div class="logo-item">
+                    <img class="logo-img" src="assets/logo-kafe/ruang-temu.png" alt="Logo Ruang Temu" onerror="this.onerror=null; this.src='https://placehold.co/150x80/4A5568/ffffff?text=RUANG+TEMU';">
                 </div>
 
-                <!-- Logo 6: AT NINE - PERLU DIGANTI URL-NYA! -->
-                <div class="logo-item rounded-xl shadow-lg hover:shadow-2xl">
-                    <img class="logo-img" 
-                         src="assets/logos/atnine-logo.png" 
-                         alt="Logo AT NINE"
-                         onerror="this.onerror=null; this.src='https://placehold.co/150x80/3182CE/ffffff?text=AT+NINE';">
+                <!-- Logo 6: AT NINE -->
+                <div class="logo-item">
+                    <img class="logo-img" src="assets/logo-kafe/atnine.png" alt="Logo AT NINE" onerror="this.onerror=null; this.src='https://placehold.co/150x80/3182CE/ffffff?text=AT+NINE';">
                 </div>
                 
             </div>
             
-            <!-- CTA Sederhana di bawah daftar mitra -->
-            <div class="mt-16 text-center">
-                <p class="text-xl text-gray-700">Tertarik berkolaborasi dengan Semeja Kerja?</p>
-                <!-- CTA Button 2 (Warna Accent - High Visual Pop) -->
-                <a href="https://wa.me/6281325392452" class="mt-3 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-lg text-primary bg-accent hover:bg-yellow-400 transition duration-300">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.04 2C6.54 2 2.08 6.47 2.02 11.97.02 18.25 4.67 22 10.37 22c1.7 0 3.32-.4 4.77-1.16l4.7 1.25-1.28-4.63C21.73 14.5 22 13.27 22 11.96 22 6.47 17.54 2 12.04 2zM17.4 15.17c-.15.22-.54.38-.7.42-.15.04-.37.06-.58.02-.21-.04-1.2-.49-1.42-.58-.22-.09-.37-.06-.54.12-.17.18-.68.86-.83 1.03-.16.17-.33.19-.6.08-.27-.1-.97-.37-1.85-1.15-.69-.6-1.15-1.34-1.3-1.58-.16-.22-.02-.35.1-.47.1-.1.22-.22.3-.35.08-.13.12-.22.18-.35.06-.13.03-.22-.01-.3-.04-.08-.37-.9-.5-1.2-.13-.3-.27-.25-.37-.25-.13 0-.28-.02-.45-.02-.17 0-.44.05-.67.3-.23.25-.87.87-.87 2.1 0 1.23.89 2.4 1.02 2.58.13.18 1.74 2.66 4.22 3.75 2.47 1.08 2.63.8 3.1 1.25.47.45.47.85.34.93-.13.08-.37.13-.6.18z"/>
-                    </svg>Hubungi Kami Sekarang
+            <!-- CTA Kolaborasi (Dibuat sebagai blok terpisah dengan padding) -->
+            <div class="mt-20 text-center p-12 bg-white rounded-3xl shadow-2xl border border-gray-100">
+                <h4 class="text-3xl font-extrabold text-primary">Ingin Kafe Anda Menjadi Mitra Berikutnya?</h4>
+                <p class="text-lg text-gray-700 mt-3">Hubungi tim Semeja Kerja untuk berkolaborasi dan mendapatkan eksposur ke komunitas profesional Purwokerto.</p>
+                
+                <a href="https://wa.me/6281325392452?text=Halo%2C%20saya%20tertarik%20untuk%20bermitra%20dengan%20Semeja%20Kerja" target="_blank" class="mt-6 inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-bold rounded-full shadow-xl text-primary bg-accent hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3e155f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-messages-square-icon lucide-messages-square mr-2"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1"/>
+                    </svg> Hubungi Tim Kami
                 </a>
             </div>
 
@@ -178,17 +246,25 @@
     </section>
 
     <!-- Footer (Warna Primary: Ungu) -->
-    <footer class="bg-primary">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-text-light text-sm mb-4">
-                <!-- Icon Instagram di Footer --><a href="https://instagram.com/semejakerja" target="_blank" rel="noopener noreferrer" class="inline-block mx-2 text-text-light hover:text-accent transition" aria-label="Instagram Semeja Kerja">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2A5.6 5.6 0 004 7.6v8.8c0 3.09 2.51 5.6 5.6 5.6h8.8c3.09 0 5.6-2.51 5.6-5.6V7.6A5.6 5.6 0 0016.4 4H7.6zM12 9a3 3 0 100 6 3 3 0 000-6zm0 2a1 1 0 110 2 1 1 0 010-2zm5.75-2.5c.69 0 1.25-.56 1.25-1.25s-.56-1.25-1.25-1.25-1.25.56-1.25 1.25.56 1.25 1.25 1.25z"/>
-                    </svg>
+    <footer class="bg-primary border-t border-accent">
+        <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Logo di Footer -->
+            <!-- Catatan: Asumsi Anda memiliki logo versi terang (light) untuk dipasang di latar belakang ungu -->
+            <img class="header-logo mx-auto mb-4" 
+                 src="assets/logos/semejakerja-logo.png" 
+                 alt="Semeja Kerja Logo" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/180x48/3D155F/F0E6D0?text=SEMEJA+KERJA';">
+
+            <!-- Sosial Media -->
+            <div class="text-text-light text-sm mb-4 flex justify-center items-center">
+                <a href="https://instagram.com/semejakerja" target="_blank" rel="noopener noreferrer" class="mx-3 text-text-light hover:text-accent transition transform hover:scale-110" aria-label="Instagram Semeja Kerja">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram-icon lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                 </a>
-            </p>
-            <p class="text-text-light text-sm">
-                &copy; 2024 Semeja Kerja. Komunitas WFC Purwokerto.
+                <!-- Tambahan Link Kontak jika perlu -->
+            </div>
+
+            <p class="text-text-light text-sm opacity-90">
+                &copy; 2025 Semeja Kerja. Komunitas WFC Purwokerto.
             </p>
         </div>
     </footer>
